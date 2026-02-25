@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package users;
+
+option go_package = "github.com/m-nt/gomod/users/interfaces/grpc;grpc";
+
+service UsersService {
+  rpc Create (CreateUserRequest) returns (UserResponse);
+  rpc Get (GetUserRequest) returns (UserResponse);
+}
+
+message CreateUserRequest {
+  string email = 1;
+  string name = 2;
+}
+
+message GetUserRequest {
+  int32 id = 1;
+}
+
+message UserResponse {
+  int32 id = 1;
+  string email = 2;
+  string name = 3;
+}
